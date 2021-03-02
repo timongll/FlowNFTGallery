@@ -1,0 +1,76 @@
+.App {
+  padding: 10px;
+  text-align: center;
+  height: 100vw; 
+  width: 100vw;
+  background-color: #f8f8f8;
+  overflow: hidden;
+  background-repeat: repeat; 
+  background-position: center center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Apfel Grotezk",-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.topContainer{
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  text-align: center;
+  
+  
+}
+
+.table{
+  background-color:#f8f8f8;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-collapse: separate;
+  border-spacing: 15px;
+}
+
+.table2{
+  background-color:#f8f8f8;
+  margin-top: -10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-collapse: separate;
+  border-spacing: 15px;
+}
+  
+
+td {
+  /*border: 1px solid black;*/
+  width: 50px;
+  height: 100px;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
+  
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
