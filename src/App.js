@@ -483,10 +483,12 @@ class App extends Component {
   renderButton(){
     return (
     <table className = "table2">
-      <tbody className = "topContainer" >
-        {this.state.collectionArray.map(name => {
+        <tbody>
+          <tr>
+            <td className = "td2">
+          {this.state.collectionArray.map((name, i) => {
             return (
-              <MyButton 
+              <MyButton key = {i}
               variant = "outlined" 
               color = "primary" 
               onClick={() => this.handleChangeShowThis(name)}>
@@ -495,7 +497,10 @@ class App extends Component {
             );
         })
         }
-      </tbody>
+        </td>
+          </tr>
+        </tbody>
+      
     </table>
     )
   }
@@ -504,13 +509,11 @@ class App extends Component {
     return (
       <table className = "table" >
         <tbody>
-          {
-             _.chunk(this.state.imgs, 3).map(chunk => (
-                  <tr> { chunk.map(img => 
-                  (<td><div>{this.renderImage(img, "150", "215")  }</div> </td>)
-                   ) } </tr>
-               ))
-          }
+          {_.chunk(this.state.imgs, 3).map((chunk, i) => (
+                  <tr key = {i}>{chunk.map((img, i) => 
+                  (<td key = {i}><div>{this.renderImage(img, "150", "215")}</div> </td>)
+                   )}</tr>
+               ))}
         </tbody>
       </table>
       )
@@ -522,9 +525,9 @@ class App extends Component {
           <tbody>
             {
                _.chunk(this.state.imgs2, 3).map((chunk, i) => (
-                    <tr key = {i}> { chunk.map((img, i) => 
-                    (<td key = {i}>{this.renderImage(img, "150", "150")  } </td>)
-                     ) } </tr>
+                    <tr key = {i}>{chunk.map((img, i) => 
+                    (<td key = {i}>{this.renderImage(img, "150", "150")}</td>)
+                     )}</tr>
                  ))
             }
           </tbody>
@@ -536,12 +539,14 @@ class App extends Component {
     return (
     <table className = "table" >
       <tbody>
-        {this.state.imgs3.map(imageUrl => {
+        <tr>
+        {this.state.imgs3.map((imageUrl, i) => {
             return (
-                <td key>{this.renderImage(imageUrl, "170", "80")}</td>
+                <td key = {i}>{this.renderImage(imageUrl, "170", "80")}</td>
             );
         })
         }
+        </tr>
       </tbody>
     </table>
     )
@@ -611,7 +616,6 @@ class App extends Component {
 
   render(){
    return (
-     
     <div className = "App">
       <h1><img src = {zerotwo} width= "80px" height = "50px"></img>Flow NFT Gallery</h1>
       <div>Search address to see its FLOW NFT collection</div>
