@@ -1,13 +1,11 @@
 import React, { Component}  from "react"
 import * as fcl from "@onflow/fcl"
 //import * as t from "@onflow/types"
-import User from "./AppUser"
 import "./App.css";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import _ from "lodash";
 import { styled } from '@material-ui/core/styles';
 import zerotwo from './zerotwo-removebg-preview.png'
-import {useCurrentUser} from "./hooks/current-user"
 import {mintCard} from "./flow/yugioh/transactions/mintcard.js"
 import {createCard} from "./flow/yugioh/transactions/createcard.js"
 import {createCard2} from "./flow/pokemon/transactions/createcard.js"
