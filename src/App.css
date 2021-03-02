@@ -5,8 +5,7 @@
   text-align: center;
   height: 100vw; 
   width: 100vw;
-  background-color: #f8f8f8;
-  overflow: hidden;
+  background-color:white;
   background-repeat: repeat; 
   background-position: center;
   background-attachment: fixed;
@@ -19,7 +18,7 @@
 
 
 .table{
-  background-color:#f8f8f8;
+  background-color:white;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
@@ -28,7 +27,7 @@
 }
 
 .table2{
-  background-color:#f8f8f8;
+  background-color:white;
   margin-top: -10px;
   margin-left: auto;
   margin-right: auto;

@@ -25,7 +25,7 @@ const acc2 = "0x1942195e827498b2"
 const acc3 = "0xaa7ec3f99c04220b"
 
 const MyButton = styled(Button)({
-  backgroundColor:"#f8f8f8",
+  backgroundColor:"white",
   borderRadius: "10px",
   borderColor: "white",
   color: "black",
