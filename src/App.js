@@ -523,9 +523,9 @@ class App extends Component {
         <table className = "table">
           <tbody>
             {
-               _.chunk(this.state.imgs2, 3).map(chunk => (
-                    <tr> { chunk.map(img => 
-                    (<td>{this.renderImage(img, "150", "150")  } </td>)
+               _.chunk(this.state.imgs2, 3).map((chunk, i) => (
+                    <tr key = {i}> { chunk.map((img, i) => 
+                    (<td key = {i}>{this.renderImage(img, "150", "150")  } </td>)
                      ) } </tr>
                  ))
             }
@@ -536,12 +536,11 @@ class App extends Component {
 
   renderKitty(){
     return (
-    <table className = "table"  borderCollapse = "separate" 
-    borderSpacing = "15px 50px">
+    <table className = "table" >
       <tbody>
         {this.state.imgs3.map(imageUrl => {
             return (
-                <td>{this.renderImage(imageUrl, "170", "80")}</td>
+                <td key>{this.renderImage(imageUrl, "170", "80")}</td>
             );
         })
         }
@@ -636,9 +635,9 @@ class App extends Component {
         </Button>
       <br></br>
       <br></br>
-      {supportedNFT.map(name => {
+      {supportedNFT.map((name, i) => {
         return (
-          <MyButton variant = "outlined" color = "primary" >
+          <MyButton key = {i} variant = "outlined" color = "primary" >
             {name}
           </MyButton>
         );
