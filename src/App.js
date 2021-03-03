@@ -636,6 +636,7 @@ class App extends Component {
       <div>Copy an account's address below and search for its FLOW NFT collection</div>
       <br></br>
       <br></br>
+      {/*
       <Button 
           style= {{
             height: "40px",
@@ -663,6 +664,7 @@ class App extends Component {
         }
       <br></br>
       <br></br>
+      */}
       
         <div>
         <Input 
