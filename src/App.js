@@ -24,18 +24,23 @@ const acc1 = "0x42de7e7e48d17e2a"
 const acc2 = "0x1942195e827498b2"
 const acc3 = "0xaa7ec3f99c04220b"
 
+
 const MyButton = styled(Button)({
   backgroundColor:"white",
   borderRadius: "10px",
   borderColor: "white",
+  borderWidth: "2px",
   color: "black",
   boxShadow: 'rgba(0, 0, 0, 0.2) 0px 5px 10px',
   margin: "10px",
   '&:hover': {
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
-    color: '#FFF',
-    color: "black",
-    borderColor: "black"
+    backgroundColor: '#f8f8f8',
+    borderWidth: "2px",
+    borderColor: "#f8f8f8"
+  },
+  '&:focus': {
+    borderColor: "black",
+    borderWidth: "2px"
   }
 })
 /*mintCard2(acc1).then(answer => {
@@ -343,6 +348,8 @@ var imgs3 = []
 var collectionArray = []
 var brandArray = []
 var supportedNFT = ["Yugioh", "Pokemon", "Kitty-Items"]
+
+
   /*async function doit() {
     const txId = await fcl.send([
       fcl.transaction`
@@ -383,6 +390,8 @@ class App extends Component {
      show1: null,
      hidethis: true,
      buttonClicked: false,
+     copied: false,
+     showSupported: true
 
    }
   }
@@ -431,7 +440,7 @@ class App extends Component {
     await getMetadata(acc1)
     this.setState({searched: true});
   }catch(error){
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -593,6 +602,10 @@ class App extends Component {
     this.setState({show1: name})
   }
 
+  handleClick = async (name) => {
+    this.setState({copied: true})
+  }
+
   handleShowBrands = async (event) => {
     collectionArray = [];
     imgs = [];
@@ -606,15 +619,21 @@ class App extends Component {
     
     await this.getAllBrands(this.state.address);
     await this.getAllCollections(this.state.address);
+  }
 
-
+  handleShowSupported = async (event) => {
+    this.setState({showSupported: !this.state.showSupported})
   }
 
   render(){
    return (
     <div className = "App">
-      <h1><img src = {zerotwo} width= "80px" height = "50px"></img>Flow NFT Gallery</h1>
-      <div>Search address to see its FLOW NFT collection</div>
+      <div>
+  <img class="img-valign" width = "100px" height = "60px" src= {zerotwo} alt="" />
+  <span class="text2"><strong>Flow NFT Gallery</strong></span>
+  
+</div>
+      <div>Copy an account's address below and search for its FLOW NFT collection</div>
       <br></br>
       <br></br>
       <Button 
@@ -635,7 +654,8 @@ class App extends Component {
       <br></br>
       {supportedNFT.map((name, i) => {
         return (
-          <MyButton key = {i} variant = "outlined" color = "primary" >
+          <MyButton  
+            onClick = {this.handleShowSupported} key = {i} variant = "outlined" color = "primary" >
             {name}
           </MyButton>
         );
@@ -685,8 +705,6 @@ class App extends Component {
 
     </div>
       : null
-
-
       }
     </div>
     <CopyToClipboard text={acc1} onCopy={this.onCopy}>
@@ -695,6 +713,12 @@ class App extends Component {
           <CopyToClipboard text={acc2} onCopy={this.onCopy}>
             <MyButton variant="outlined" color="primary" onClick={this.handleClick}>test account 2</MyButton>
           </CopyToClipboard>
+          <br></br>
+          <br></br>
+          {(this.state.copied)
+          ? <div style = {{color: "red"}}> Copied</div>
+          : null
+          }
     </div>
     )
   }

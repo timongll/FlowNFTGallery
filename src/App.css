@@ -1,7 +1,9 @@
 
 .App {
-  margin:-20px;
-  padding:0px;
+  padding: 40px 30px 60px 30px;
+  max-width: 850px;
+  margin: auto;
+  min-height: 100vh;
   text-align: center;
   height: 100vw; 
   width: 100vw;
@@ -38,7 +40,6 @@ tr {
   width: 50px;
   height: 100px;
   padding: 20px;
-  overflow: hidden;
 }
 
 td{
@@ -50,6 +51,24 @@ td{
 .td2{
   padding: 10px;
   box-shadow: none;
+}
+
+.img-valign {
+  padding: 10px;
+  vertical-align: middle;
+  margin-bottom: 0.75em;
+}
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: flex-start ;
+}
+
+.text2 {
+  padding: 10px;
+  font-size: 34px;
 }
 
 .App-header {
