@@ -24,6 +24,7 @@ var imgs3temp
 var imgs3 = []
 var collectionArray = []
 
+//todo: handle CSS separate folders
 const MyButton = styled(Button)({
   backgroundColor:"white",
   borderRadius: "10px",
@@ -285,7 +286,7 @@ class App extends Component {
   }
 
 
-
+//todo: separate to different folders
   render(){
    return (
     <div className = "App">
