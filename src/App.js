@@ -73,6 +73,7 @@ class App extends Component {
     }
   }
 
+  //todo: SEPARATE TO DIFFERENT FOLDERS
   async getAllBrands(address){
     try{
     let hasYugiohCollection = await hasCollection(address).then(answer =>{
