@@ -289,52 +289,24 @@ class App extends Component {
    return (
     <div className = "App">
       <div>
-  <img class="img-valign" width = "100px" height = "60px" src= {zerotwo} alt="" />
-  <span class="text2"><strong>Flow NFT Gallery</strong></span>
+        <img className ="img-valign" width = "100px" height = "60px" src= {zerotwo} alt="" />
+        <span className ="text2"><strong>Flow NFT Gallery</strong></span>
   
-</div>
+      </div>
       <div>Copy an account's address below and search for its FLOW NFT collection</div>
-      <br></br>
-      <br></br>
-      {/*
-      <Button 
-          style= {{
-            height: "40px",
-            borderRadius: "10px",
-            backgroundColor: "black",
-            color: "white",
-            fontSize: "16px",
-            boxShadow: 'rgba(0, 0, 0, 0.2) 0px 5px 10px',
-          }}
-          variant = "outlined" 
-          color = "primary" 
-          >
-          Supported NFTs
-        </Button>
-      <br></br>
-      <br></br>
-      {supportedNFT.map((name, i) => {
-        return (
-          <MyButton  
-            onClick = {this.handleShowSupported} key = {i} variant = "outlined" color = "primary" >
-            {name}
-          </MyButton>
-        );
-      })
-        }
-      <br></br>
-      <br></br>
-      */}
+        <br></br>
+        <br></br>
       
-        <div>
+      <div>
         <Input 
           style={{ 
             borderRadius: 100,
             height: 30, 
-          }} 
-          
-          type="text" onChange={this.handleChangeAddress}/>    
+          }}
+          type="text" onChange={this.handleChangeAddress}
+        />    
         &nbsp;
+
         <MyButton 
           variant = "outlined" 
           color = "primary" 
@@ -342,8 +314,8 @@ class App extends Component {
           Search
         </MyButton>
 
-        </div>
-        <div>
+      </div>
+      <div>
       {(this.state.searched)
       ? <div>
         <br></br>
@@ -363,24 +335,23 @@ class App extends Component {
           Collection
         </Button>
           {this.renderButton()}</div>
-      <strong>{this.renderCollection()}</strong>
-
+          <strong>{this.renderCollection()}</strong>
     </div>
       : null
       }
     </div>
-    <CopyToClipboard text={acc1} onCopy={this.onCopy}>
-      <MyButton variant="outlined" color="primary" onClick={this.handleClick}>test account 1</MyButton>
-    </CopyToClipboard>
-    <CopyToClipboard text={acc2} onCopy={this.onCopy}>
-      <MyButton variant="outlined" color="primary" onClick={this.handleClick}>test account 2</MyButton>
-    </CopyToClipboard>
-          <br></br>
-          <br></br>
-          {(this.state.copied)
-          ? <div style = {{color: "red"}}> Copied</div>
-          : null
-          }
+      <CopyToClipboard text={acc1} onCopy={this.onCopy}>
+        <MyButton variant="outlined" color="primary" onClick={this.handleClick}>test account 1</MyButton>
+      </CopyToClipboard>
+      <CopyToClipboard text={acc2} onCopy={this.onCopy}>
+        <MyButton variant="outlined" color="primary" onClick={this.handleClick}>test account 2</MyButton>
+      </CopyToClipboard>
+      <br></br>
+      <br></br>
+      {(this.state.copied)
+      ? <div style = {{color: "red"}}> Copied</div>
+      : null
+      }
     </div>
     )
   }
