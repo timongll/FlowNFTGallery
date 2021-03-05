@@ -79,7 +79,6 @@ class App extends Component {
 
   componentDidMount = async () => {
     try {
-
     }catch (error) {
       console.error(error);
     }
@@ -221,7 +220,7 @@ class App extends Component {
             {
                _.chunk(this.state.imgs4, 3).map((chunk, i) => (
                     <tr key = {i}>{chunk.map((img, i) => 
-                    (<td key = {i}>{this.renderImage(img, "150", "120")}</td>)
+                    (<td key = {i}>{this.renderImage(img, "180", "180")}</td>)
                      )}</tr>
                  ))
             }
@@ -348,7 +347,7 @@ class App extends Component {
       <div>
         <img className ="img-valign" width = "100px" height = "60px" src= {zerotwo} alt="" />
         <span className ="text2"><strong>Flow NFT Gallery</strong></span>
-  
+
       </div>
       <div>Copy an account's address below and search for its FLOW NFT collection</div>
         <br></br>
