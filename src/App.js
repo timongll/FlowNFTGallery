@@ -25,6 +25,7 @@ const acc3 = "0xaa7ec3f99c04220b"
 const acc4 = "0x6f2dc70deed7b20d"
 
 
+
 var imgs
 var imgs2
 var imgs3temp
@@ -344,7 +345,6 @@ class App extends Component {
   render(){
    return (
     <div className = "App">
-      <AuthCluster />
       <div>
         <img className ="img-valign" width = "100px" height = "60px" src= {zerotwo} alt="" />
         <span className ="text2"><strong>Flow NFT Gallery</strong></span>
