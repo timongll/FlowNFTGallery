@@ -1,4 +1,5 @@
 import React, { Component}  from "react"
+import {AuthCluster} from "./authcluster"
 import * as fcl from "@onflow/fcl"
 //import * as t from "@onflow/types"
 import "./App.css";
@@ -9,21 +10,28 @@ import zerotwo from './zerotwo-removebg-preview.png'
 import {hasCollection} from "./flow/yugioh/scripts/hascollection.js"
 import {hasCollection2} from "./flow/pokemon/scripts/hascollection.js"
 import {hasCollection3} from "./flow/kittyitems/scripts/hascollection.js"
+import {hasCollection4} from "./flow/versus/scripts/hascollection.js"
 import {getMetadata} from "./flow/yugioh/scripts/getmetadata.js"
 import {getMetadata2} from "./flow/pokemon/scripts/getmetadata.js"
 import {getTypeIDs} from "./flow/kittyitems/scripts/gettypeid.js"
+import {getArt} from "./flow/versus/scripts/getart.js"
+import {getArtMetadata} from "./flow/versus/scripts/getartmetadata.js"
+import {setupVersusAccount} from "./flow/versus/transactions/setupversusaccount.js"
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 const acc1 = "0x42de7e7e48d17e2a"
 const acc2 = "0x1942195e827498b2"
 const acc3 = "0xaa7ec3f99c04220b"
+const acc4 = "0x6f2dc70deed7b20d"
+
 
 var imgs
 var imgs2
 var imgs3temp
 var imgs3 = []
+var imgs4
 var collectionArray = []
-
+var a;
 //todo: handle CSS separate folders
 const MyButton = styled(Button)({
   backgroundColor:"white",
@@ -53,6 +61,7 @@ class App extends Component {
      imgs: [],
      imgs2: [],
      imgs3: [],
+     imgs4: [],
      user: null,
      collectionArray: [],
      address: "",
@@ -61,7 +70,8 @@ class App extends Component {
      hidethis: true,
      buttonClicked: false,
      copied: false,
-     showSupported: true
+     showSupported: true,
+     a: null
 
    }
   }
@@ -82,17 +92,26 @@ class App extends Component {
     if(hasYugiohCollection) {
       collectionArray.push("Yugioh")
     }
+
     let hasPokemonCollection = await hasCollection2(address).then(answer =>{
       return answer});
 
     if(hasPokemonCollection){
       collectionArray.push("Pokemon");
     }
+
     let hasKittyCollection = await hasCollection3(address).then(answer =>{
       return answer});
     if(hasKittyCollection){
       collectionArray.push("Kitty-Items");
     }
+
+    let hasArtCollection = await hasCollection4(address).then(answer =>{
+      return answer});
+    if(hasArtCollection){
+      collectionArray.push("Art");
+    }
+
     this.setState({collectionArray: collectionArray})
   }catch(error){
     console.log(error)
@@ -104,6 +123,7 @@ class App extends Component {
     await this.getMetadataYugioh(address)
     await this.getMetadataPokemon(address)
     await this.getMetadataKitty(address)
+    await this.getMetadataArt(address)
     this.setState({searched: true});
   }catch(error){
     console.log(error);
@@ -139,6 +159,13 @@ class App extends Component {
       }
       this.setState({imgs3: imgs3})
   }
+
+  async getMetadataArt(address){
+    await getArt(address).then(async result => {
+      imgs4 = result;
+    })
+    this.setState({imgs4: imgs4})
+}
 
   renderYugioh(){
     return (
@@ -178,6 +205,22 @@ class App extends Component {
                _.chunk(this.state.imgs3, 3).map((chunk, i) => (
                     <tr key = {i}>{chunk.map((img, i) => 
                     (<td key = {i}>{this.renderImage(img, "170", "80")}</td>)
+                     )}</tr>
+                 ))
+            }
+          </tbody>
+        </table>
+        )
+  }
+
+  renderArt(){
+    return (
+        <table className = "table">
+          <tbody>
+            {
+               _.chunk(this.state.imgs4, 3).map((chunk, i) => (
+                    <tr key = {i}>{chunk.map((img, i) => 
+                    (<td key = {i}>{this.renderImage(img, "150", "120")}</td>)
                      )}</tr>
                  ))
             }
@@ -242,6 +285,14 @@ class App extends Component {
         </div>
       : null
       }
+
+        {(this.state.show1 === "Art")
+      ?  <div>
+        {this.state && this.state.collectionArray && 
+        this.state.collectionArray.includes("Art") && this.renderArt()}
+        </div>
+      : null
+      }
       </div>
     )
   }
@@ -255,6 +306,7 @@ class App extends Component {
     imgs = [];
     imgs2 = [];
     imgs3 = [];
+    imgs4 = [];
     this.setState({collectionArray: []});
     this.getAllCollections();
   }
@@ -276,10 +328,12 @@ class App extends Component {
     imgs = [];
     imgs2 = [];
     imgs3 = [];
+    imgs4 = [];
     this.setState({collectionArray: []});
     this.setState({imgs: []});
     this.setState({imgs2: []});
     this.setState({imgs3: []});
+    this.setState({imgs4: []});
     this.setState({searched: true});
     await this.getAllBrands(this.state.address);
     await this.getAllCollections(this.state.address);
@@ -290,6 +344,7 @@ class App extends Component {
   render(){
    return (
     <div className = "App">
+      <AuthCluster />
       <div>
         <img className ="img-valign" width = "100px" height = "60px" src= {zerotwo} alt="" />
         <span className ="text2"><strong>Flow NFT Gallery</strong></span>
@@ -298,7 +353,6 @@ class App extends Component {
       <div>Copy an account's address below and search for its FLOW NFT collection</div>
         <br></br>
         <br></br>
-      
       <div>
         <Input 
           style={{ 
