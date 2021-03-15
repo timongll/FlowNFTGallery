@@ -16,7 +16,12 @@
     "react-bootstrap": "^0.32.4",
     "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^17.0.1",
+    "react-image-fallback": "^8.0.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
+    "react-scroll": "^1.8.2",
+    "react-spring": "^8.0.27",
+    "styled-components": "^5.2.1",
     "web-vitals": "^1.0.1",
     "yarn": "^1.22.10"
   },
@@ -43,5 +48,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-image-fallback": "^8.0.1",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/styled-components": "^5.1.8"
   }
 }

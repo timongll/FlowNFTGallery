@@ -1,7 +1,7 @@
 import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 
-export async function getMetadata2(account) {
+export async function getPokemonImages(account) {
   return fcl
     .send([
       fcl.script`

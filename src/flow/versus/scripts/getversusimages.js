@@ -1,7 +1,7 @@
 import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 
-export async function getArt(address) {
+export async function getVersusImages(address) {
   return fcl
     .send([
       fcl.script`
