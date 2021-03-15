@@ -113,7 +113,7 @@ const SearchBar = () => {
               Search
             </AddySubmit>
           </AddyForm>
-          <Footer>flownftgallery ©2021</Footer>
+          <Footer>flowgallery ©2021</Footer>
         </Trail>
       </InnerWrapper>
     </SearchBarWrapper>
