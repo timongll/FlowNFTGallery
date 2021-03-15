@@ -1,7 +1,7 @@
 import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 
-export async function hasPokemonCollection(account) {
+export async function hasPokemonCollection(account: string) {
   return fcl
     .send([
       fcl.script`

@@ -24,7 +24,13 @@ align-items: center;
 
 `;
 
-const NFTCard = ({ nft, width, height }) => {
+interface Props {
+  nft: any;
+  width: string;
+  height: string;
+}
+
+const NFTCard: React.FC<Props> =({ nft, width, height }) => {
   return (
     <Card >
       <NFTImg>

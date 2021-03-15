@@ -5,10 +5,10 @@ import Trail from "./Trail";
 import NFTCard from "./NFTCard";
 import Spinner from "./Spinner/Spinner";
 import ContractPill from "./ContractPill";
-import { getYugiohImages } from "../flow/yugioh/scripts/getyugiohimages.js";
-import { getPokemonImages } from "../flow/pokemon/scripts/getpokemonimages.js";
+import { getYugiohImages } from "../flow/yugioh/scripts/getyugiohimages";
+import { getPokemonImages } from "../flow/pokemon/scripts/getpokemonimages";
 import { getKittyIDs } from "../flow/kittyitems/scripts/getkittyids";
-import { getVersusImages } from "../flow/versus/scripts/getversusimages.js";
+import { getVersusImages } from "../flow/versus/scripts/getversusimages";
 
 const ContractPillWrapper = styled.div`
   display: flex;
@@ -30,22 +30,32 @@ const NFTsWrapper = styled.div`
 
 const NoCollectionsMessage = styled.div``;
 
-const Collections = ({
+interface Params {
+  walletParam: string;
+}
+
+interface Props {
+  NFTs?: any;
+  selectedContract: string | undefined;
+  handleContractClick: (str: string) => void;
+}
+
+const Collections: React.FC<Props> = ({
   NFTs,
   selectedContract,
   handleContractClick,
 }) => {
-  const { walletParam } = useParams();
-  const [imageArray, setImageArray] = useState([]);
-  const [loadingNFT, setLoadingNFT] = useState(true);
-  const [width, setWidth] = useState("250px");
-  const [height, setHeight] = useState("250px");
+  const { walletParam } = useParams<Params>();
+  const [imageArray, setImageArray] = useState<string[]>([]);
+  const [loadingNFT, setLoadingNFT] = useState<boolean>(true);
+  const [width, setWidth] = useState<string>("250px");
+  const [height, setHeight] = useState<string>("250px");
 
   useEffect(() => {
     setLoadingNFT(true);
     setWidth("250px");
     setHeight("250px");
-    var array = []
+    var array: string[] = []
     const getImageURLs = async () => {
       switch(selectedContract) {
         case "Yugioh":
@@ -83,7 +93,7 @@ const Collections = ({
       <ContractPillWrapper>
         <Trail>
           {NFTs.length > 0 ? (
-            NFTs.map((str) => (
+            NFTs.map((str: string) => (
               <ContractPill
                 key = {str}
                 contractKey={str}
@@ -105,7 +115,7 @@ const Collections = ({
           {!loadingNFT ? (
             <Trail key={selectedContract}>
               <NFTsWrapper>
-                {imageArray.map((nft, index) => (
+                {imageArray.map((nft: any, index: number) => (
                   <NFTCard
                     nft={nft}
                     key={index}

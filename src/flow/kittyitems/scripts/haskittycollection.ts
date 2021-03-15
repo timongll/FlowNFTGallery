@@ -1,7 +1,7 @@
 import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 
-export async function hasKittyCollection(address) {
+export async function hasKittyCollection(address: string) {
   return fcl
     .send([
       fcl.script`

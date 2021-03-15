@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
 
-const Pill = styled.div`
+const Pill = styled.div<{ isSelected: boolean }>`
   border: ${(p) => (p.isSelected ? "3px solid #333" : "3px solid transparent")};
   display: flex;
   // font-size: 0.9em;
@@ -31,7 +31,13 @@ const ContractTitle = styled.p`
   margin: 5px 5px 5px 5px;
 `;
 
-const ContractPill = ({
+interface Props {
+  contractKey: string;
+  isSelected: boolean;
+  handleContractClick: (contractKey: string) => void;
+}
+
+const ContractPill: React.FC<Props> = ({
   contractKey,
   isSelected,
   handleContractClick,

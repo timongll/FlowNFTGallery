@@ -8,18 +8,22 @@ import Collections from "./Collections";
 import {getNFTs} from "../flow/getNFTs";
 import CategoriesMenu from "./CategoriesMenu";
 
+interface Params {
+  walletParam: string;
+}
+
 const WalletWrapper = styled.div``;
 
-const Wallet = () => {
+const Wallet: React.FC = () => {
 
-  const { walletParam } = useParams();
-  const [isAccount, setIsAccount] = useState();
-  const [loadingWalletHeader, setLoadingWalletHeader] = useState(true);
-  const [NFTs, setNFTs] = useState();
-  const [selectedContract, setSelectedContract] = useState();
+  const { walletParam } = useParams<Params>();
+  const [isAccount, setIsAccount] = useState<boolean>();
+  const [loadingWalletHeader, setLoadingWalletHeader] = useState<boolean>(true);
+  const [NFTs, setNFTs] = useState<string[]>();
+  const [selectedContract, setSelectedContract] = useState<string>();
 
   useEffect(() => {
-    const getWeb3 = async () => {
+    const getAccountAndCollection = async () => {
       try {
       const isAccountParam = await getAccount(walletParam);
       setIsAccount(isAccountParam);
@@ -27,13 +31,12 @@ const Wallet = () => {
       var collections = await getNFTs(walletParam);
       setNFTs(collections)
       }catch (error){
-        console.log(error);
       }
     }; 
-      getWeb3();
+      getAccountAndCollection();
     },[isAccount, walletParam]);
 
-  const handleContractClick = (contractName) => {
+  const handleContractClick = (contractName: string): void => {
     setSelectedContract(contractName);
   };
 

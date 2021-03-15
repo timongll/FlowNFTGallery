@@ -1,7 +1,7 @@
 import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 
-export async function getKittyIDs(address) {
+export async function getKittyIDs(address: string) {
   return fcl
     .send([
       fcl.script`

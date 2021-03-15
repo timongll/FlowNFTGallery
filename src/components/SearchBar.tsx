@@ -73,16 +73,16 @@ const Footer = styled.div`
   font-size: 1.25rem;
 `;
 
-const cleanAddress = (addy) => {
+const cleanAddress = (addy: string | undefined) => {
   if (!addy) {
     return null;
   }
   return addy;
 };
 
-const SearchBar = () => {
+const SearchBar: React.FC = () => {
   let history = useHistory();
-  const [addyInput, setAddyInput] = useState("0x42de7e7e48d17e2a");
+  const [addyInput, setAddyInput] = useState<string>("0x42de7e7e48d17e2a");
 
   const handleSubmit = (event) => {
     event.preventDefault();

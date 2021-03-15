@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /src/testflow
+/.vscode
 # testing
 /coverage
 
