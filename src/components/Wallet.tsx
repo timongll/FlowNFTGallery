@@ -29,6 +29,7 @@ const Wallet: React.FC = () => {
       setIsAccount(isAccountParam);
       setLoadingWalletHeader(false);
       var collections = await getNFTs(walletParam);
+      console.log("reached");
       setNFTs(collections)
       }catch (error){
       }
@@ -51,8 +52,8 @@ const Wallet: React.FC = () => {
     );
   }
   return (
+    
       <WalletWrapper>
-
         {loadingWalletHeader  ? (
           <div>
             <Trail>

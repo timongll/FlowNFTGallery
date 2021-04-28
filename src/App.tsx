@@ -5,7 +5,13 @@ import SearchBar from "./components/SearchBar";
 import Trail from "./components/Trail";
 import Flow from "./assets/flow.png";
 import Wallet from "./components/Wallet";
-
+import {hasYugiohCollection} from "./flow/yugioh/scripts/hasyugiohcollection"
+async function hi() {
+  await hasYugiohCollection("0x42de7e7e48d17e2a").then(hi => {
+    console.log(hi);
+  })
+}
+hi();
 const AppWrapper = styled.div`
   padding: 40px 30px 60px 30px;
   max-width: 850px;
@@ -28,7 +34,7 @@ export default function App() {
             }}
           >
             <Link to="/">
-              <img style={{ width: 100 }} alt="aas" src={Flow} />
+              <img style={{ width: 100, }} alt="aas" src={Flow} />
             </Link>
           </div>
         </Trail>
